@@ -1,0 +1,101 @@
+{%extends "base.html"%} 
+
+    {%block title%}home{%endblock%}
+
+
+
+{%block content%}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<center><h1>
+
+{%for crumb in breadcrumb%}
+ /{{crumb}}
+
+{%endfor%}
+
+
+</h1></center>
+
+
+
+
+<ul style="display:inline">
+<li style="display:inline">BTC: {{xmrprice["BTC"]}}</li>
+<li style="display:inline">USD: {{xmrprice["USD"]}}</li>
+<li style="display:inline">EUR: {{xmrprice["EUR"]}}</li>
+</ul>
+
+
+
+<center>
+  <div style="position: absolute; bottom: 0; right: 0;" >
+    {%for listing in listings.items %}
+       <a href="{{url_for('listing', id=listing.id)}}">
+        <div class="listing" style="padding-right:100px" >{{listing.title}}</div>
+            <h2>{{listing.title}}</h2>
+            <p>{{listing.description}}</p>
+            <p>{{listing.price}}</p>
+            <p>{{listing.location}}</p>
+            <p>{{listing.shipsTo}}</p>
+        </div>
+        </a>
+
+       
+      
+       
+        
+    {%endfor%}
+</div>
+</center>
+  
+      <div style="display: flex; justify-content: center; position: absolute; bottom:0">
+      {%for page in listings.iter_pages(right_current=2,left_current=1, left_edge=1,right_edge=1) %}  
+        {%if page%}
+          {%if page!=listings.page%}
+          <a href="{{url_for('home', page=page)}}" style="padding:20px">{{page}}</a>
+          {%else%}
+          <div class="justify-content-center" style="padding:20px"><strong>{{page}}</strong></div>
+          {%endif%}
+        {%else%}
+        <div class="justify-content-center" style="padding:20px">...</div>
+        {%endif%}
+      
+        
+      {%endfor%}
+   
+     </div>
+   
+
+  {%endblock%}

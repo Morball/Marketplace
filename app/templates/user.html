@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+{%block title%}{{user.username}}{%endblock%}
+
+
+{%block content%}
+<h1>{{user.username}}</h1>
+<p>last online: {{user.last_login.strftime('%Y-%m-%d')}}</p>
+<p>trust score: {{user.trustScore}}</p>
+<p>role: {{user.role}}</p>
+
+
+
+
+{%endblock%}

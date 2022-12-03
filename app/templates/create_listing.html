@@ -1,0 +1,12 @@
+{%extends "base.html"%}
+{%block content%}
+<center><h1>
+
+{%for crumb in breadcrumb%}
+ /{{crumb}}
+
+{%endfor%}
+
+
+</h1></center>
+{%endblock%}
